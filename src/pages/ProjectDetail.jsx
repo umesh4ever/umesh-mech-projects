@@ -22,7 +22,7 @@ const ProjectDetail = () => {
         <div className="w-full bg-gray-100 rounded-xl p-4">
 
           <model-viewer
-            src="/models/cmm.glb"
+            src={`${import.meta.env.BASE_URL}models/cmm.glb`}
             camera-controls
             auto-rotate
             shadow-intensity="1"
@@ -44,7 +44,7 @@ const ProjectDetail = () => {
               controls
               className="w-full rounded-lg"
             >
-              <source src="/videos/GantryCMMParts.mp4" type="video/mp4" />
+              <source src={`${import.meta.env.BASE_URL}videos/GantryCMMParts.mp4`} type="video/mp4" />
             </video>
           </div>
 
@@ -57,7 +57,7 @@ const ProjectDetail = () => {
               controls
               className="w-full rounded-lg"
             >
-              <source src="/videos/GantryCMMWorking.mp4" type="video/mp4" />
+              <source src={`${import.meta.env.BASE_URL}videos/GantryCMMWorking.mp4`} type="video/mp4" />
             </video>
           </div>
 
