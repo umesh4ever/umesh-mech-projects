@@ -8,7 +8,7 @@ import "@google/model-viewer"
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <StrictMode>
-    <BrowserRouter>
+    <BrowserRouter basename="umesh-mech-projects">
       <App />
     </BrowserRouter>
   </StrictMode>

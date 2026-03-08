@@ -3,7 +3,9 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
+  "homepage": "https://github.com/umesh4ever/umesh-mech-projects.git",
   "scripts": {
+    "deploy":"gh-pages -d dist",
     "dev": "vite",
     "build": "vite build",
     "lint": "eslint .",
