@@ -1,4 +1,5 @@
-import { FaLinkedin, FaTwitter, FaGithub } from "react-icons/fa"
+import { FaLinkedin, FaGithub } from "react-icons/fa"
+import { FaXTwitter } from "react-icons/fa6"
 
 const Footer = () => {
   return (
@@ -13,7 +14,7 @@ const Footer = () => {
         <div className="flex gap-6 text-2xl">
 
           <a
-            href="https://linkedin.com"
+            href="https://www.linkedin.com/in/umesh-b7066627b/"
             target="_blank"
             rel="noreferrer"
             className="hover:text-blue-400 transition"
@@ -22,16 +23,16 @@ const Footer = () => {
           </a>
 
           <a
-            href="https://twitter.com"
+            href="https://x.com/umesh26710051?t=osNStRsMP5N1hCn3TWjRVg&s=09"
             target="_blank"
             rel="noreferrer"
             className="hover:text-blue-400 transition"
           >
-            <FaTwitter />
+            <FaXTwitter />
           </a>
 
           <a
-            href="https://github.com"
+            href="https://github.com/umesh4ever"
             target="_blank"
             rel="noreferrer"
             className="hover:text-gray-400 transition"
