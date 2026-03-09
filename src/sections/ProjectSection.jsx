@@ -1,4 +1,5 @@
 import ProjectCard from "../components/ProjectCard"
+import projects from "../data/projects"
 
 const ProjectSection = () => {
   return (
@@ -13,18 +14,21 @@ const ProjectSection = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
 
           <ProjectCard
-            title="Gantry CMM"
+            title={projects.cmm.title}
             id="cmm"
+            cover={projects.cmm.cover}
           />
 
           <ProjectCard
-            title="Geneva Mechanism"
+            title={projects.geneva.title}
             id="geneva"
+            cover={projects.geneva.cover}
           />
 
           <ProjectCard
-            title="DRS Mechanism"
+            title={projects.drs.title}
             id="drs"
+            // cover={projects.drs.cover}
           />
 
         </div>

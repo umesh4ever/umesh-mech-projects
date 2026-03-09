@@ -1,16 +1,26 @@
 import { Link } from "react-router-dom"
+import projects from "../data/projects"
 
-const ProjectCard = ({ title, id }) => {
+const ProjectCard = ({ id, title, cover }) => {
+  // const { id } = useParams()
+  // const project = projects[id]
+
   return (
     <Link to={`/project/${id}`}>
 
-      <div className="bg-gray-50 rounded-xl shadow hover:shadow-lg transition p-6 cursor-pointer">
+      <div className="bg-gray-50 rounded-xl shadow hover:shadow-lg transition cursor-pointer overflow-hidden">
 
-        <div className="h-40 bg-gray-200 rounded mb-4"></div>
+        <img
+          src={`${import.meta.env.BASE_URL}${cover}`}
+          alt={title}
+          className="h-40 w-full object-cover"
+        />
 
-        <h3 className="text-xl font-semibold">
-          {title}
-        </h3>
+        <div className="p-6">
+          <h3 className="text-xl font-semibold">
+            {title}
+          </h3>
+        </div>
 
       </div>
 

@@ -1,91 +1,71 @@
-import { useParams, Link } from "react-router-dom"
+import { useParams } from "react-router-dom"
+import projects from "../data/projects"
 
 const ProjectDetail = () => {
-
   const { id } = useParams()
+  const project = projects[id]
+
+  if (!project) return <p>Project not found</p>
 
   return (
     <section className="w-full py-16 px-6">
+      <div className="max-w-6xl mx-auto space-y-10">
 
-      <div className="max-w-6xl mx-auto space-y-12">
+        <h1 className="text-4xl font-bold">{project.title}</h1>
 
-        <Link to="/" className="text-blue-500">
-          ← Back to Projects
-        </Link>
+        {/* 3D Model */}
+        <model-viewer
+          src={`${import.meta.env.BASE_URL}${project.model}`}
+          camera-controls
+          auto-rotate
+          className="w-full h-96"
+        ></model-viewer>
 
-        {/* Title */}
-        <h1 className="text-4xl font-bold">
-          {id} Project
-        </h1>
-
-        {/* 3D MODEL */}
-        <div className="w-full bg-gray-100 rounded-xl p-4">
-
-          <model-viewer
-            src={`${import.meta.env.BASE_URL}models/cmm.glb`}
-            camera-controls
-            auto-rotate
-            shadow-intensity="1"
-            class="w-full h-96"
-          >
-          </model-viewer>
-
-        </div>
-
-        {/* VIDEOS */}
+        {/* Videos */}
         <div className="grid md:grid-cols-2 gap-8">
 
-          <div>
-            <h3 className="text-xl font-semibold mb-3">
-              CAD Model Parts
-            </h3>
+          <video controls className="w-full rounded-lg">
+            <source
+              src={`${import.meta.env.BASE_URL}${project.videos[0]}`}
+              type="video/mp4"
+            />
+          </video>
 
-            <video
-              controls
-              className="w-full rounded-lg"
-            >
-              <source src={`${import.meta.env.BASE_URL}videos/GantryCMMParts.mp4`} type="video/mp4" />
-            </video>
-          </div>
-
-          <div>
-            <h3 className="text-xl font-semibold mb-3">
-              Working Demonstration
-            </h3>
-
-            <video
-              controls
-              className="w-full rounded-lg"
-            >
-              <source src={`${import.meta.env.BASE_URL}videos/GantryCMMWorking.mp4`} type="video/mp4" />
-            </video>
-          </div>
+          <video controls className="w-full rounded-lg">
+            <source
+              src={`${import.meta.env.BASE_URL}${project.videos[1]}`}
+              type="video/mp4"
+            />
+          </video>
 
         </div>
 
-        {/* PROJECT DESCRIPTION */}
-        <div className="space-y-4">
+        {/* Description */}
+        <div className="space-y-6">
 
-          <h2 className="text-2xl font-semibold">
-            About the Project
-          </h2>
+          <div>
+            <h2 className="text-xl font-semibold">Project Overview</h2>
+            <p>{project.overview}</p>
+          </div>
 
-          <p className="text-gray-700 leading-relaxed">
-            Explain the theory of the project here. You can describe
-            what the machine does, what components were used, and the
-            engineering principles involved.
-          </p>
+          <div>
+            <h2 className="text-xl font-semibold">Mechanical Structure</h2>
+            <p>{project.structure}</p>
+          </div>
 
-          <p className="text-gray-700 leading-relaxed">
-            You can also write about your personal journey building
-            this model — challenges in CAD modelling, simulation,
-            or designing the mechanism.
-          </p>
+          <div>
+            <h2 className="text-xl font-semibold">Working Principle</h2>
+            <p>{project.working}</p>
+          </div>
+
+          <div>
+            <h2 className="text-xl font-semibold">Personal Learning</h2>
+            <p>{project.learning}</p>
+          </div>
 
         </div>
 
       </div>
-
     </section>
   )
 }
