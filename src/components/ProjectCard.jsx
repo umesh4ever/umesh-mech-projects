@@ -1,31 +1,57 @@
 import { Link } from "react-router-dom"
-import projects from "../data/projects"
 
-const ProjectCard = ({ id, title, cover }) => {
-  // const { id } = useParams()
-  // const project = projects[id]
+const ProjectCard = ({ id, title, cover, status, progress }) => {
 
-  return (
-    <Link to={`/project/${id}`}>
+  const CardContent = (
+    <div className="bg-gray-100 rounded-xl shadow hover:shadow-lg transition cursor-pointer overflow-hidden relative">
 
-      <div className="bg-gray-50 rounded-xl shadow hover:shadow-lg transition cursor-pointer overflow-hidden">
+      {/* Image */}
+      <img
+        src={`${import.meta.env.BASE_URL}${cover}`}
+        alt={title}
+        className={`h-40 w-full object-cover ${
+          status === "progress" ? "opacity-0" : ""
+        }`}
+      />
 
-        <img
-          src={`${import.meta.env.BASE_URL}${cover}`}
-          alt={title}
-          className="h-40 w-full object-cover"
-        />
+      {/* Overlay for in-progress */}
+      {status === "progress" && (
+        <div className="absolute inset-0 flex flex-col items-center justify-center bg-black/40 text-white px-4">
 
-        <div className="p-6">
-          <h3 className="text-xl font-semibold">
-            {title}
-          </h3>
+          <p className="text-sm font-semibold mb-3">
+            Work In Progress
+          </p>
+
+          {/* Progress bar */}
+          <div className="w-3/4 bg-white/30 rounded-full h-2">
+            <div
+              className="bg-yellow-400 h-2 rounded-full"
+              style={{ width: `${progress}%` }}
+            ></div>
+          </div>
+
+          <span className="text-xs mt-2">
+            {progress}% complete
+          </span>
+
         </div>
+      )}
 
+      {/* Title */}
+      <div className="p-6">
+        <h3 className="text-xl font-semibold">
+          {title}
+        </h3>
       </div>
 
-    </Link>
+    </div>
   )
+
+  if (status === "progress") {
+    return CardContent
+  }
+
+  return <Link to={`/project/${id}`}>{CardContent}</Link>
 }
 
 export default ProjectCard

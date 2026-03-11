@@ -18,7 +18,7 @@ const ProjectDetail = () => {
           src={`${import.meta.env.BASE_URL}${project.model}`}
           camera-controls
           auto-rotate
-          className="w-full h-96"
+          className="w-auto lg:mx-20 h-96 rounded-xl bg-linear-to-br from-slate-800 via-slate-700 to-slate-900 shadow-xl"
         ></model-viewer>
 
         {/* Videos */}
@@ -44,22 +44,22 @@ const ProjectDetail = () => {
         <div className="space-y-6">
 
           <div>
-            <h2 className="text-xl font-semibold">Project Overview</h2>
+            <h2 className="text-2xl font-semibold">Project Title & Overview</h2>
             <p>{project.overview}</p>
           </div>
 
           <div>
-            <h2 className="text-xl font-semibold">Mechanical Structure</h2>
+            <h2 className="text-2xl font-semibold">About the Gantry CMM</h2>
             <p>{project.structure}</p>
           </div>
 
           <div>
-            <h2 className="text-xl font-semibold">Working Principle</h2>
+            <h2 className="text-2xl font-semibold">Working Principle</h2>
             <p>{project.working}</p>
           </div>
 
           <div>
-            <h2 className="text-xl font-semibold">Personal Learning</h2>
+            <h2 className="text-2xl font-semibold">Personal Learning</h2>
             <p>{project.learning}</p>
           </div>
 

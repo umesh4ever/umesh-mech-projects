@@ -6,7 +6,7 @@
   "homepage": "https://github.com/umesh4ever/umesh-mech-projects.git",
   "scripts": {
     "predeploy": "npm run build",
-    "deploy":"gh-pages -d dist",
+    "deploy": "gh-pages -d dist",
     "dev": "vite",
     "build": "vite build",
     "lint": "eslint .",
@@ -15,11 +15,15 @@
   "dependencies": {
     "@google/model-viewer": "^4.1.0",
     "@tailwindcss/vite": "^4.2.1",
+    "@tsparticles/react": "^3.0.0",
     "react": "^19.2.4",
     "react-dom": "^19.2.4",
     "react-icons": "^5.6.0",
     "react-router-dom": "^7.13.1",
-    "tailwindcss": "^4.2.1"
+    "react-tsparticles": "^2.12.2",
+    "tailwindcss": "^4.2.1",
+    "tsparticles": "^3.9.1",
+    "tsparticles-slim": "^2.12.0"
   },
   "devDependencies": {
     "@eslint/js": "^9.39.1",

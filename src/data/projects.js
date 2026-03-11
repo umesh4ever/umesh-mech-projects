@@ -5,8 +5,8 @@ const projects = {
     cover: "coverImages/cmmCover.png",
     videos: ["videos/GantryCMMParts.mp4", "videos/GantryCMMWorking.mp4"],
     overview:
-      "Conceptual Coordinate Measuring Machine model demonstrating the structure and working of a gantry-type inspection system.",
-    structure:
+      "A Gantry Coordinate Measuring Machine (CMM) is a large-scale, high-precision measurement system designed for inspecting massive and heavy components. Unlike standard CMMs that require parts to be lifted onto a table, a Gantry CMM features an overhead structure that moves across a floor-mounted workspace, often using the floor itself as the measurement reference (datum).",
+    topicIntro:
       "The model includes a base platform, vertical columns, and a horizontal beam carrying the probe assembly.",
     working:
       "The probe moves along the machine axes to measure coordinates of points on the object placed on the base.",
@@ -32,7 +32,7 @@ const projects = {
   drs: {
     title: "Drag Reduction System (DRS)",
     model: "models/turbine.glb",
-    cover: "coverImages/cmmCover.png",
+    cover: "coverImages/placeholder.png",
     videos: ["videos/turbine-parts.mp4", "videos/turbine-working.mp4"],
     overview: "A CAD model of a Drag Reduction System used in racing cars to reduce aerodynamic drag.", 
     structure: "The system consists of a rear wing with a movable flap connected through hinge and linkage mechanisms.", 

@@ -4,7 +4,7 @@ const Contact = () => {
   return (
     <section
       id="contact"
-      className="w-full py-24 bg-gray-100"
+      className="w-full py-10 bg-gray-100"
     >
 
       <div className="max-w-5xl mx-auto text-center px-6">
@@ -13,7 +13,7 @@ const Contact = () => {
           Contact Me
         </h2>
 
-        <p className="text-gray-600 mb-12">
+        <p className="text-gray-600 text-lg mb-12">
           Feel free to reach out if you want to discuss engineering, CAD projects, or collaboration.
         </p>
 
@@ -21,7 +21,7 @@ const Contact = () => {
 
           {/* Email */}
           <a
-            href="mailto:umesh@email.com"
+            href="mailto:umesh26710051@gmail.com"
             className="flex items-center gap-4 bg-white p-6 rounded-xl shadow hover:shadow-lg transition"
           >
             <FaEnvelope className="text-3xl text-blue-500" />
@@ -38,7 +38,7 @@ const Contact = () => {
 
           {/* WhatsApp */}
           <a
-            href="https://wa.me/9289253686"
+            href="https://wa.me/919289253686"
             target="_blank"
             rel="noreferrer"
             className="flex items-center gap-4 bg-white p-6 rounded-xl shadow hover:shadow-lg transition"

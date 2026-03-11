@@ -26,7 +26,7 @@ const Footer = () => {
             href="https://x.com/umesh26710051?t=osNStRsMP5N1hCn3TWjRVg&s=09"
             target="_blank"
             rel="noreferrer"
-            className="hover:text-blue-400 transition"
+            className="hover:text-gray-400 transition"
           >
             <FaXTwitter />
           </a>

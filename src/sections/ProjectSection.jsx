@@ -3,7 +3,7 @@ import projects from "../data/projects"
 
 const ProjectSection = () => {
   return (
-    <section id="projects" className="w-full py-20 px-10">
+    <section id="projects" className="w-full py-10 px-10">
 
       <div className="max-w-6xl mx-auto">
 
@@ -28,7 +28,9 @@ const ProjectSection = () => {
           <ProjectCard
             title={projects.drs.title}
             id="drs"
-            // cover={projects.drs.cover}
+            cover={projects.drs.cover}
+            status="progress"
+            progress = {40}
           />
 
         </div>
