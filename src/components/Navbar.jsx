@@ -43,7 +43,7 @@ const Navbar = () => {
               if (location.pathname === "/") {
                 document
                   .getElementById("projects")
-                  ?.scrollIntoView({ behavior: "smooth" })
+                  ?.scrollIntoView({behavior: "smooth"})
               } else {
                 navigate("/")
                 setTimeout(() => {

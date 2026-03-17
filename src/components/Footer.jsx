@@ -11,7 +11,7 @@ const Footer = () => {
           Connect with me
         </h2>
 
-        <div className="flex gap-6 text-2xl">
+        <div className="flex gap-10 text-2xl">
 
           <a
             href="https://www.linkedin.com/in/umesh-b7066627b/"

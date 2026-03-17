@@ -1,7 +1,14 @@
 import { useParams } from "react-router-dom"
 import projects from "../data/projects"
+import { useEffect } from "react";
 
 const ProjectDetail = () => {
+
+    useEffect(() => {
+    // This runs once when the component mounts
+      window.scrollTo(0, 0);
+    }, []);
+
   const { id } = useParams()
   const project = projects[id]
 

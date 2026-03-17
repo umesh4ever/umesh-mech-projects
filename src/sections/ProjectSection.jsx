@@ -3,7 +3,7 @@ import projects from "../data/projects"
 
 const ProjectSection = () => {
   return (
-    <section id="projects" className="w-full py-10 px-10">
+    <section id="projects" className="w-full py-10 px-8">
 
       <div className="max-w-6xl mx-auto">
 

@@ -49,7 +49,7 @@ const Header = () => {
   };
 
   return (
-    <header className="relative w-full py-12 px-6 bg-slate-900 text-white overflow-hidden">
+    <header className="relative w-full py-6 px-6 lg:py-12  bg-slate-900 text-white overflow-hidden">
       {/* Particles Container */}
       {init && (
         <Particles
