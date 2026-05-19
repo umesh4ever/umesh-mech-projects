@@ -35,6 +35,13 @@ const ProjectDetail = () => {
           </h2>
         </div>
 
+        <div>
+          <h2 className="text-xl lg:text-2xl my-2 ">
+            <span className="font-bold text-blue-800">System : </span>
+            {project.system}
+          </h2>
+        </div>
+
         {/* 3D Model */}
         {project.model && (
           <div id="modelDiv">
@@ -60,13 +67,15 @@ const ProjectDetail = () => {
         <div>
           <h2 className="text-2xl my-2">
             <span className="font-bold text-blue-800">Theory :</span>
+            {project.whatItIs?.map((para, index) => (
+              <p
+                key={index}
+                className="mb-4 text-xl lg:text-2xl leading-relaxed"
+              >
+                {para}
+              </p>
+            ))}
           </h2>
-
-          {project.whatItIs?.map((para, index) => (
-            <p key={index} className="mb-4 text-xl lg:text-2xl leading-relaxed">
-              {para}
-            </p>
-          ))}
         </div>
 
         {/* Videos */}
@@ -99,10 +108,10 @@ const ProjectDetail = () => {
         {/* Description */}
         <div className="space-y-6">
           <h1 className="text-2xl lg:text-4xl text-center my-4 text-red-600">
-            More Project Details will be added  soon.
+            More Project Details will be added soon.
           </h1>
         </div>
-
+      
         {/* Images */}
         {project.resultImages?.filter(Boolean).length > 0 && (
           <div id="ImageDiv" className="mt-16">
@@ -129,9 +138,16 @@ const ProjectDetail = () => {
         )}
 
         <div className="space-y-6">
-          <h1 className="text-2xl lg:text-4xl text-center my-4 text-red-600">
-            Conclusion here.
+          <h1 className="text-2xl lg:text-4xl my-4">
+            <span className="font-bold text-blue-800">Conclusion through the Results.</span>
           </h1>
+
+          {project.resultKeyword?.map((keyword, index) => (
+            <p key={index} className="mb-4 text-xl lg:text-2xl leading-relaxed">
+              <span className="font-bold">{keyword} :</span>{" "}
+              {project.resultConclusion?.[index]}
+            </p>
+          ))}
         </div>
       </div>
     </section>

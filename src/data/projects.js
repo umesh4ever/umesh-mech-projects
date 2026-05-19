@@ -6,7 +6,7 @@ const projects = {
       "The objective is to design a model of Gantry CMM the biggest type of CMMs.",
     purpose:
       "To get comfortable with complex modeling with multiple parts and set motion restrictions.",
-    tool: "I have used fusion 360.",
+    tool: ["I have used fusion 360."],
     model: "models/cmm.glb",
     modelCaption: "Gantry CMM CAD model",
     cover: "coverImages/cmmCover.png",
@@ -45,6 +45,8 @@ const projects = {
     type: "simulation",
     title: "Drag Reduction System (DRS)",
     objective: "Not defined yet",
+
+    tool: "I have used fusion 360.",
     model: "models/turbine.glb",
     cover: "coverImages/placeholder.png",
     videos: ["videos/turbine-parts.mp4", "videos/turbine-working.mp4"],
@@ -56,7 +58,10 @@ const projects = {
     objective:
       "objective is to perform a CFX analysis and measure the aerodynamics lift and drag forces.",
     model: "",
+    tool: ["I have used Space Claim to design the truck body.","And Ansys CFX is used to perform the solution and the pre and post processing."],
     cover: "coverImages/truckCover.png",
+
+    system : "a simple truck body is created in ansys spaceclaim.",
     preResultImages :[],
     resultImages: [
       "truck/dragForce.png",
@@ -66,6 +71,8 @@ const projects = {
       "truck/velocityContour.png",
     ],
     resultImageCaptions: ["Drag Force","Lift Force","Pressure Contour","Streamline","Velocity Contour"],
+    resultKeyword : ["Pressure Contour","Velocity contour","Streamlines"],
+    resultConclusion: ["Pressure contours show the distribution of pressure throughout your fluid model. They use color codes to highlight areas where pressure builds up or drops. For example, red areas usually mean high pressure where fluid slams into a wall, while blue areas show low pressure where the fluid speeds up.","Velocity contours display how fast the fluid is moving at any given spot. The color gradient helps you easily spot high-speed zones, like fluid shooting through a narrow pipe. It also reveals dead zones, where the fluid slows down to a stop, or regions where the flow separates from a surface.","Streamlines draw the actual path that fluid particles travel through your design. They look like smooth, flowing lines that trace the direction of the flow. By looking at these lines, you can easily see if the fluid is moving smoothly or if it is spinning into turbulent whirlpools and vortices."],
   },
 };
 
