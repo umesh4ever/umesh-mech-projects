@@ -74,6 +74,25 @@ const projects = {
     resultKeyword : ["Pressure Contour","Velocity contour","Streamlines"],
     resultConclusion: ["Pressure contours show the distribution of pressure throughout your fluid model. They use color codes to highlight areas where pressure builds up or drops. For example, red areas usually mean high pressure where fluid slams into a wall, while blue areas show low pressure where the fluid speeds up.","Velocity contours display how fast the fluid is moving at any given spot. The color gradient helps you easily spot high-speed zones, like fluid shooting through a narrow pipe. It also reveals dead zones, where the fluid slows down to a stop, or regions where the flow separates from a surface.","Streamlines draw the actual path that fluid particles travel through your design. They look like smooth, flowing lines that trace the direction of the flow. By looking at these lines, you can easily see if the fluid is moving smoothly or if it is spinning into turbulent whirlpools and vortices."],
   },
+
+  shockAbsorber :{
+    
+    type: "shock_absorber",
+    title: "Coilover shock absorber",
+    purpose:"To get a comfortable hands on NX constraints and assembly.",
+    objective:
+      "To create the cad model of a coilover shock absorber using siemens NX and understand parametric sketching and components assembly.",
+    model: "",
+    tool: ["I have used siemens NX to design the components of the coilover and assembled them in a separate assembly file in the same."],
+    cover: "coverImages/shockAbsorber.png",
+    videos: ["videos/shockAbsorber.mp4"],
+    system : [],
+    preResultImages :[],
+    resultImages: ["shockAbsorber/exploded.png"],
+    resultImageCaptions: ["Exploded view"],
+    resultKeyword : [],
+    resultConclusion: [""],
+  }
 };
 
 export default projects;

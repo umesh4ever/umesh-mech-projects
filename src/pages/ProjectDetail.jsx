@@ -111,7 +111,7 @@ const ProjectDetail = () => {
             More Project Details will be added soon.
           </h1>
         </div>
-      
+
         {/* Images */}
         {project.resultImages?.filter(Boolean).length > 0 && (
           <div id="ImageDiv" className="mt-16">
@@ -139,7 +139,9 @@ const ProjectDetail = () => {
 
         <div className="space-y-6">
           <h1 className="text-2xl lg:text-4xl my-4">
-            <span className="font-bold text-blue-800">Conclusion through the Results.</span>
+            <span className="font-bold text-blue-800">
+              Conclusion through the Results.
+            </span>
           </h1>
 
           {project.resultKeyword?.map((keyword, index) => (
@@ -148,6 +150,33 @@ const ProjectDetail = () => {
               {project.resultConclusion?.[index]}
             </p>
           ))}
+        </div>
+
+        <div className="">
+          <h1 className="text-2xl lg:text-4xl my-4">
+            <span className="font-bold text-blue-800">Downloads</span>
+          </h1>
+          <a
+            href="shockAbsorber/objfile.obj"
+            download
+            className="bg-blue-600 text-white px-5 py-2 mx-4 rounded-lg hover:bg-blue-700"
+          >
+            Download OBJ File
+          </a>
+          <a
+            href="shockAbsorber/objfile.obj"
+            download
+            className="bg-blue-600 text-white px-5 py-2 mx-4 rounded-lg hover:bg-blue-700"
+          >
+            Download prt File
+          </a>
+          <a
+            href="shockAbsorber/objfile.obj"
+            download
+            className="bg-blue-600 text-white px-5 py-2 mx-4 rounded-lg hover:bg-blue-700"
+          >
+            Download step File
+          </a>
         </div>
       </div>
     </section>

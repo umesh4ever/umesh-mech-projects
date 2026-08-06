@@ -28,6 +28,12 @@ const ProjectSection = () => {
             cover={projects.geneva.cover}
           />
 
+          <ProjectCard
+            title={projects.shockAbsorber.title}
+            id="shockAbsorber"
+            cover={projects.shockAbsorber.cover}
+          />
+
         </div>
         </div>
 
