@@ -58,11 +58,14 @@ const projects = {
     objective:
       "objective is to perform a CFX analysis and measure the aerodynamics lift and drag forces.",
     model: "",
-    tool: ["I have used Space Claim to design the truck body.","And Ansys CFX is used to perform the solution and the pre and post processing."],
+    tool: [
+      "I have used Space Claim to design the truck body.",
+      "And Ansys CFX is used to perform the solution and the pre and post processing.",
+    ],
     cover: "coverImages/truckCover.png",
 
-    system : "a simple truck body is created in ansys spaceclaim.",
-    preResultImages :[],
+    system: "a simple truck body is created in ansys spaceclaim.",
+    preResultImages: [],
     resultImages: [
       "truck/dragForce.png",
       "truck/liftForce.png",
@@ -70,29 +73,62 @@ const projects = {
       "truck/streamline.png",
       "truck/velocityContour.png",
     ],
-    resultImageCaptions: ["Drag Force","Lift Force","Pressure Contour","Streamline","Velocity Contour"],
-    resultKeyword : ["Pressure Contour","Velocity contour","Streamlines"],
-    resultConclusion: ["Pressure contours show the distribution of pressure throughout your fluid model. They use color codes to highlight areas where pressure builds up or drops. For example, red areas usually mean high pressure where fluid slams into a wall, while blue areas show low pressure where the fluid speeds up.","Velocity contours display how fast the fluid is moving at any given spot. The color gradient helps you easily spot high-speed zones, like fluid shooting through a narrow pipe. It also reveals dead zones, where the fluid slows down to a stop, or regions where the flow separates from a surface.","Streamlines draw the actual path that fluid particles travel through your design. They look like smooth, flowing lines that trace the direction of the flow. By looking at these lines, you can easily see if the fluid is moving smoothly or if it is spinning into turbulent whirlpools and vortices."],
+    resultImageCaptions: [
+      "Drag Force",
+      "Lift Force",
+      "Pressure Contour",
+      "Streamline",
+      "Velocity Contour",
+    ],
+    resultKeyword: ["Pressure Contour", "Velocity contour", "Streamlines"],
+    resultConclusion: [
+      "Pressure contours show the distribution of pressure throughout your fluid model. They use color codes to highlight areas where pressure builds up or drops. For example, red areas usually mean high pressure where fluid slams into a wall, while blue areas show low pressure where the fluid speeds up.",
+      "Velocity contours display how fast the fluid is moving at any given spot. The color gradient helps you easily spot high-speed zones, like fluid shooting through a narrow pipe. It also reveals dead zones, where the fluid slows down to a stop, or regions where the flow separates from a surface.",
+      "Streamlines draw the actual path that fluid particles travel through your design. They look like smooth, flowing lines that trace the direction of the flow. By looking at these lines, you can easily see if the fluid is moving smoothly or if it is spinning into turbulent whirlpools and vortices.",
+    ],
   },
 
-  shockAbsorber :{
-    
-    type: "shock_absorber",
+  shockAbsorber: {
+    type: "cad",
     title: "Coilover shock absorber",
-    purpose:"To get a comfortable hands on NX constraints and assembly.",
+    purpose: "To get a comfortable hands on NX constraints and assembly.",
     objective:
       "To create the cad model of a coilover shock absorber using siemens NX and understand parametric sketching and components assembly.",
     model: "",
-    tool: ["I have used siemens NX to design the components of the coilover and assembled them in a separate assembly file in the same."],
+    tool: [
+      "I have used siemens NX to design the components of the coilover and assembled them in a separate assembly file using the same.",
+    ],
     cover: "coverImages/shockAbsorber.png",
     videos: ["videos/shockAbsorber.mp4"],
-    system : [],
-    preResultImages :[],
+    system: [],
+    preResultImages: [],
     resultImages: ["shockAbsorber/exploded.png"],
     resultImageCaptions: ["Exploded view"],
-    resultKeyword : [],
+    resultKeyword: [],
     resultConclusion: [""],
-  }
+    file: ["shockAbsorber/objfile.obj"],
+  },
+
+  discBrake: {
+    type: "cad",
+    title: "Floating Disc Brake",
+    purpose: "To create a floating disc brake assembly using siemens NX and assemble and keep things as close to the real parts as possible.",
+    objective:
+      "To create the cad model of a coilover shock absorber using siemens NX and understand parametric sketching and components assembly.",
+    model: "",
+    tool: [
+      "I have used siemens NX to design the components of the floating disc brake and assembled them in a separate assembly file using the same.",
+    ],
+    cover: "coverImages/discBrakeCover.png",
+    videos: ["videos/discBrake.mp4"],
+    system: [],
+    preResultImages: [],
+    resultImages: ["coverImages/discBrakeCover.png"],
+    resultImageCaptions: ["Exploded view"],
+    videoCaptions: ["Assembly Video"],
+    resultKeyword: [],
+    resultConclusion: [""],
+  },
 };
 
 export default projects;

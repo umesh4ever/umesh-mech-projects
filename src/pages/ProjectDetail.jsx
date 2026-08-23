@@ -105,18 +105,11 @@ const ProjectDetail = () => {
           </div>
         )}
 
-        {/* Description */}
-        <div className="space-y-6">
-          <h1 className="text-2xl lg:text-4xl text-center my-4 text-red-600">
-            More Project Details will be added soon.
-          </h1>
-        </div>
-
         {/* Images */}
         {project.resultImages?.filter(Boolean).length > 0 && (
           <div id="ImageDiv" className="mt-16">
             <h1 className="text-4xl text-center my-4 font-bold">
-              Image Results
+              Result Images 
             </h1>
 
             <div className="grid md:grid-cols-2 gap-8">
@@ -152,32 +145,20 @@ const ProjectDetail = () => {
           ))}
         </div>
 
-        <div className="">
-          <h1 className="text-2xl lg:text-4xl my-4">
-            <span className="font-bold text-blue-800">Downloads</span>
-          </h1>
-          <a
-            href="shockAbsorber/objfile.obj"
-            download
-            className="bg-blue-600 text-white px-5 py-2 mx-4 rounded-lg hover:bg-blue-700"
-          >
-            Download OBJ File
-          </a>
-          <a
-            href="shockAbsorber/objfile.obj"
-            download
-            className="bg-blue-600 text-white px-5 py-2 mx-4 rounded-lg hover:bg-blue-700"
-          >
-            Download prt File
-          </a>
-          <a
-            href="shockAbsorber/objfile.obj"
-            download
-            className="bg-blue-600 text-white px-5 py-2 mx-4 rounded-lg hover:bg-blue-700"
-          >
-            Download step File
-          </a>
-        </div>
+        {project.file && (
+          <div className="my-4">
+            <h1 className="text-2xl lg:text-4xl my-4">
+              <span className="font-bold text-blue-800">Downloads</span>
+            </h1>
+            <a
+              href={project.file}
+              download
+              className="bg-blue-600 text-white px-5 py-2 mx-4 rounded-lg hover:bg-blue-700"
+            >
+              Download OBJ File
+            </a>
+          </div>
+        )}
       </div>
     </section>
   );
