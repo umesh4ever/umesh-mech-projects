@@ -58,6 +58,26 @@ const Navbar = () => {
             Projects
           </button>
 
+          <button
+            onClick={() => {
+              if (location.pathname === "/") {
+                document
+                  .getElementById("notes")
+                  ?.scrollIntoView({ behavior: "smooth" })
+              } else {
+                navigate("/")
+                setTimeout(() => {
+                  document
+                    .getElementById("notes")
+                    ?.scrollIntoView({ behavior: "smooth" })
+                }, 100)
+              }
+            }}
+            className="cursor-pointer hover:text-gray-300 transition"
+          >
+            Notes
+          </button>
+
           <a
             href={`${import.meta.env.BASE_URL}resume/CoreResume.pdf`}
             target="_blank"
@@ -130,6 +150,27 @@ const Navbar = () => {
             className="cursor-pointer hover:text-gray-300 transition text-left"
           >
             Projects
+          </button>
+
+          <button
+            onClick={() => {
+              if (location.pathname === "/") {
+                document
+                  .getElementById("notes")
+                  ?.scrollIntoView({ behavior: "smooth" })
+              } else {
+                navigate("/")
+                setTimeout(() => {
+                  document
+                    .getElementById("notes")
+                    ?.scrollIntoView({ behavior: "smooth" })
+                }, 100)
+              }
+              setMenuOpen(false)
+            }}
+            className="cursor-pointer hover:text-gray-300 transition text-left"
+          >
+            Notes
           </button>
 
           <a

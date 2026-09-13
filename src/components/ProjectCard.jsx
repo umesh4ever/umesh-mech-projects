@@ -3,13 +3,13 @@ import { Link } from "react-router-dom"
 const ProjectCard = ({ id, title, cover, status, progress }) => {
 
   const CardContent = (
-    <div className="bg-gray-100 rounded-xl shadow hover:shadow-lg transition cursor-pointer overflow-hidden relative">
+    <div className="group relative cursor-pointer overflow-hidden rounded-xl border border-slate-200 bg-white shadow-sm transition duration-300 hover:-translate-y-1 hover:border-blue-300 hover:shadow-lg">
 
       {/* Image */}
       <img
         src={`${import.meta.env.BASE_URL}${cover}`}
         alt={title}
-        className={`h-40 w-full object-cover ${
+        className={`h-28 w-full object-cover transition duration-500 group-hover:scale-105 sm:h-40 ${
           status === "progress" ? "opacity-0" : ""
         }`}
       />
@@ -38,8 +38,8 @@ const ProjectCard = ({ id, title, cover, status, progress }) => {
       )}
 
       {/* Title */}
-      <div className="p-6">
-        <h3 className="text-xl font-semibold">
+      <div className="min-h-20 p-3 sm:min-h-24 sm:p-6">
+        <h3 className="text-sm font-semibold leading-snug text-slate-800 sm:text-xl">
           {title}
         </h3>
       </div>

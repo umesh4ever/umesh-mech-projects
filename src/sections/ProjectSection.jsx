@@ -3,18 +3,18 @@ import projects from "../data/projects"
 
 const ProjectSection = () => {
   return (
-    <section id="projects" className="w-full py-10 px-8">
+    <section id="projects" className="scroll-mt-16 w-full bg-slate-200 px-4 py-16 sm:px-6 lg:px-8">
 
       <div className="max-w-6xl mx-auto">
 
-        <h2 className="text-4xl font-bold text-center mb-10">
+        <h2 className="text-center text-4xl font-bold tracking-tight text-slate-900 mb-10">
           Projects
         </h2>
 
         <div>
-          <h2 className="text-3xl font-semibold my-10 font-serif" >CAD Project</h2>
+          <h2 className="my-10 text-2xl font-semibold tracking-tight text-slate-800 sm:text-3xl">CAD Project</h2>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-2 gap-3 sm:gap-5 md:grid-cols-2 lg:grid-cols-3 lg:gap-8">
 
           <ProjectCard
             title={projects.discBrake.title}
@@ -44,9 +44,9 @@ const ProjectSection = () => {
         </div>
 
         <div>
-          <h2 className="text-3xl font-semibold my-10 font-serif" >Simulation Project</h2>
+          <h2 className="my-10 text-2xl font-semibold tracking-tight text-slate-800 sm:text-3xl">Simulation Project</h2>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" >
+          <div className="grid grid-cols-2 gap-3 sm:gap-5 md:grid-cols-2 lg:grid-cols-3 lg:gap-8">
           <ProjectCard
             title={projects.truck.title}
             id="truck"

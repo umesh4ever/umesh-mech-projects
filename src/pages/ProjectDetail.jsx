@@ -14,8 +14,8 @@ const ProjectDetail = () => {
   if (!project) return <p>Project not found</p>;
 
   return (
-    <section className="w-full py-16 px-6 ">
-      <div className="max-w-6xl bg-white mx-auto space-y-10 lg:px-30 lg:border-l-2 lg:border-r-2 border-blue-800">
+    <section className="w-full bg-slate-200 px-6 py-16">
+      <div className="mx-auto max-w-6xl space-y-10 bg-slate-200 lg:border-l-2 lg:border-r-2 lg:border-blue-800 lg:px-30">
         <h1 className=" text-4xl lg:text-6xl text-center font-bold font-serif">
           {project.title}
         </h1>

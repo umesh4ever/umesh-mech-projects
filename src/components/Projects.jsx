@@ -4,7 +4,7 @@ import ProjectDetails from '../pages/ProjectDetails'
 
 const Projects = () => {
   return (
-  <section className="w-full py-10 px-10 bg-white">
+  <section className="w-full bg-slate-200 px-10 py-10">
 
     <div className="max-w-6xl mx-auto">
 
