@@ -77,6 +77,33 @@ const subjects = {
       },
     ],
   },
+
+  dev: {
+    name: "Dev Related",
+    description: "React JS, Javascript, Github",
+    topics: [
+      {
+        name: "Javascript",
+        type: "pdf",
+        file: "notes/dev/js.pdf",
+      },
+      {
+        name: "React JS",
+        type: "pdf",
+        file: "notes/dev/react.pdf",
+      },
+      {
+        name: "Github Deployment Guide",
+        type: "pdf",
+        file: "notes/dev/github_deployment.pdf",
+      },
+      {
+        name: "Github ReadMe guide",
+        type: "pdf",
+        file: "notes/dev/github_readme.pdf",
+      },
+    ],
+  },
 };
 
 export default subjects;
