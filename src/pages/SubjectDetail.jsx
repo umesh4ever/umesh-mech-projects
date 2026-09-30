@@ -11,7 +11,14 @@ pdfjs.GlobalWorkerOptions.workerSrc = new URL(
   import.meta.url,
 ).toString()
 
-const PdfViewer = ({ file, title }) => {
+const LoadingSpinner = ({ label = "Loading preview..." }) => (
+  <div className="flex flex-col items-center justify-center gap-3" role="status" aria-live="polite">
+    <div className="h-10 w-10 animate-spin rounded-full border-4 border-white/60 border-t-blue-600" />
+    <span className="text-sm font-medium text-slate-700">{label}</span>
+  </div>
+)
+
+const PdfViewer = ({ file, title, onLoadingChange }) => {
   const viewerRef = useRef(null)
   const [pageCount, setPageCount] = useState(null)
   const [viewerWidth, setViewerWidth] = useState(0)
@@ -35,6 +42,13 @@ const PdfViewer = ({ file, title }) => {
   const handleLoadSuccess = ({ numPages }) => {
     setPageCount(numPages)
     setError(false)
+    onLoadingChange(true)
+  }
+
+  const handlePageRenderSuccess = (pageNumber) => {
+    if (pageNumber === 1) {
+      onLoadingChange(false)
+    }
   }
 
   if (error) {
@@ -46,7 +60,7 @@ const PdfViewer = ({ file, title }) => {
   }
 
   return (
-    <div ref={viewerRef} className="w-full overflow-x-auto">
+    <div ref={viewerRef} className="relative min-h-[480px] w-full overflow-x-auto">
       <div className="mb-4 flex items-center justify-center gap-3">
         <button
           type="button"
@@ -72,12 +86,16 @@ const PdfViewer = ({ file, title }) => {
       <Document
         file={file}
         onLoadSuccess={handleLoadSuccess}
-        onLoadError={() => setError(true)}
-        loading={<p className="p-8 text-center text-slate-500">Loading PDF...</p>}
+        onLoadError={() => {
+          setError(true)
+          onLoadingChange(false)
+        }}
+        loading={null}
         error={<p className="p-8 text-center text-red-700">Unable to load this PDF.</p>}
       >
         {pageCount && viewerWidth > 0 && (
-          <div className="space-y-5">
+          <>
+            <div className="space-y-5">
             {Array.from({ length: pageCount }, (_, index) => (
               <div key={`${title}-${index + 1}`} className="flex justify-center">
                 <Page
@@ -85,13 +103,33 @@ const PdfViewer = ({ file, title }) => {
                   width={viewerWidth * zoom}
                   renderTextLayer
                   renderAnnotationLayer
+                  onRenderSuccess={() => handlePageRenderSuccess(index + 1)}
                   loading={<div className="h-32 w-full animate-pulse rounded bg-slate-200" />}
                 />
               </div>
             ))}
-          </div>
+            </div>
+          </>
         )}
       </Document>
+    </div>
+  )
+}
+
+const ImageViewer = ({ file, title, onLoadingChange }) => {
+  const [loaded, setLoaded] = useState(false)
+
+  return (
+    <div className="relative flex min-h-[480px] w-full items-center justify-center">
+      <img
+        src={file}
+        alt={title}
+        onLoad={() => {
+          setLoaded(true)
+          onLoadingChange(false)
+        }}
+        className={`max-h-[70vh] max-w-full rounded-lg object-contain shadow-sm transition-opacity duration-300 ${loaded ? "opacity-100" : "h-0 opacity-0"}`}
+      />
     </div>
   )
 }
@@ -100,6 +138,7 @@ const SubjectDetail = () => {
   const { id } = useParams()
   const subject = subjects[id]
   const [selectedTopic, setSelectedTopic] = useState(null)
+  const [isPreviewLoading, setIsPreviewLoading] = useState(false)
 
   useEffect(() => {
     window.scrollTo(0, 0)
@@ -107,8 +146,36 @@ const SubjectDetail = () => {
 
   useEffect(() => {
     if (selectedTopic) {
-      document.getElementById("reference-viewer")?.scrollIntoView({ behavior: "smooth" })
+      const preview = document.getElementById("reference-viewer")
+
+      if (!preview) return undefined
+
+      const startPosition = window.scrollY
+      const targetPosition = preview.getBoundingClientRect().top + window.scrollY - 72
+      const distance = targetPosition - startPosition
+      const duration = 850
+      let animationFrame
+      const startTime = performance.now()
+
+      const animateScroll = (currentTime) => {
+        const progress = Math.min((currentTime - startTime) / duration, 1)
+        const easedProgress = progress < 0.5
+          ? 2 * progress * progress
+          : 1 - Math.pow(-2 * progress + 2, 2) / 2
+
+        window.scrollTo(0, startPosition + distance * easedProgress)
+
+        if (progress < 1) {
+          animationFrame = requestAnimationFrame(animateScroll)
+        }
+      }
+
+      animationFrame = requestAnimationFrame(animateScroll)
+
+      return () => cancelAnimationFrame(animationFrame)
     }
+
+    return undefined
   }, [selectedTopic])
 
   if (!subject) {
@@ -124,8 +191,19 @@ const SubjectDetail = () => {
 
   const getFileUrl = (file) => `${import.meta.env.BASE_URL}${file}`
 
+  const selectTopic = (topic) => {
+    setSelectedTopic(topic)
+    setIsPreviewLoading(true)
+  }
+
   return (
-    <section className="w-full bg-slate-200 px-6 py-16 text-slate-900 sm:px-10">
+    <section className="relative w-full bg-slate-200 px-6 py-16 text-slate-900 sm:px-10">
+      {isPreviewLoading && (
+        <div className="fixed inset-0 z-[60] flex items-center justify-center bg-slate-200/75 p-6 backdrop-blur-[2px]">
+          <LoadingSpinner label="Loading preview..." />
+        </div>
+      )}
+
       <div className="mx-auto max-w-6xl">
         <Link to="/" className="text-sm font-semibold text-blue-600 hover:text-blue-800">
           &lt;- Back to home
@@ -146,7 +224,7 @@ const SubjectDetail = () => {
             <button
               key={topic.name}
               type="button"
-              onClick={() => setSelectedTopic(topic)}
+              onClick={() => selectTopic(topic)}
               className={`rounded-2xl border bg-white p-6 text-left shadow-sm transition hover:-translate-y-1 hover:border-blue-400 hover:shadow-lg ${
                 selectedTopic?.name === topic.name
                   ? "border-blue-500 ring-2 ring-blue-100"
@@ -181,14 +259,17 @@ const SubjectDetail = () => {
             <div id="reference-viewer" className="flex min-h-[520px] items-center justify-center bg-slate-100 p-3 sm:p-6">
               {selectedTopic.type === "pdf" ? (
                 <PdfViewer
+                  key={selectedTopic.file}
                   file={getFileUrl(selectedTopic.file)}
                   title={selectedTopic.name}
+                  onLoadingChange={setIsPreviewLoading}
                 />
               ) : (
-                <img
-                  src={getFileUrl(selectedTopic.file)}
-                  alt={selectedTopic.name}
-                  className="max-h-[70vh] max-w-full rounded-lg object-contain shadow-sm"
+                <ImageViewer
+                  key={selectedTopic.file}
+                  file={getFileUrl(selectedTopic.file)}
+                  title={selectedTopic.name}
+                  onLoadingChange={setIsPreviewLoading}
                 />
               )}
             </div>

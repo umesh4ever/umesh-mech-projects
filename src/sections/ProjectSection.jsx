@@ -1,5 +1,5 @@
 import ProjectCard from "../components/ProjectCard"
-import projects from "../data/projects"
+import projects from "../projects"
 
 const ProjectSection = () => {
   return (
@@ -11,58 +11,30 @@ const ProjectSection = () => {
           Projects
         </h2>
 
-        <div>
-          <h2 className="my-10 text-2xl font-semibold tracking-tight text-slate-800 sm:text-3xl">CAD Project</h2>
+        {[
+          ["CAD Project", projects.filter((project) => project.type === "cad")],
+          ["Simulation Project", projects.filter((project) => project.type === "simulation")],
+        ].map(([heading, projectGroup]) => (
+          <div key={heading}>
+            <h2 className="my-10 text-2xl font-semibold tracking-tight text-slate-800 sm:text-3xl">
+              {heading}
+            </h2>
 
-          <div className="grid grid-cols-2 gap-3 sm:gap-5 md:grid-cols-2 lg:grid-cols-3 lg:gap-8">
-
-          <ProjectCard
-            title={projects.discBrake.title}
-            id="discBrake"
-            cover={projects.discBrake.cover}
-          />
-
-          <ProjectCard
-            title={projects.cmm.title}
-            id="cmm"
-            cover={projects.cmm.cover}
-          />
-
-          <ProjectCard
-            title={projects.geneva.title}
-            id="geneva"
-            cover={projects.geneva.cover}
-          />
-
-          <ProjectCard
-            title={projects.shockAbsorber.title}
-            id="shockAbsorber"
-            cover={projects.shockAbsorber.cover}
-          />
-
-        </div>
-        </div>
-
-        <div>
-          <h2 className="my-10 text-2xl font-semibold tracking-tight text-slate-800 sm:text-3xl">Simulation Project</h2>
-
-          <div className="grid grid-cols-2 gap-3 sm:gap-5 md:grid-cols-2 lg:grid-cols-3 lg:gap-8">
-          <ProjectCard
-            title={projects.truck.title}
-            id="truck"
-            cover={projects.truck.cover}
-          />
-
-          <ProjectCard
-            title={projects.drs.title}
-            id="drs"
-            cover={projects.drs.cover}
-            status="progress"
-            progress = {90}
-          />
-
-        </div>
-        </div>
+            <div className="grid grid-cols-2 gap-3 sm:gap-5 md:grid-cols-2 lg:grid-cols-3 lg:gap-8">
+              {projectGroup.map((project) => (
+                <ProjectCard
+                  key={project.id}
+                  id={project.id}
+                  title={project.title}
+                  cover={project.cover}
+                  type={project.type}
+                  status={project.status}
+                  progress={project.progress}
+                />
+              ))}
+            </div>
+          </div>
+        ))}
 
       </div>
 

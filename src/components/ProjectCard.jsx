@@ -1,18 +1,54 @@
 import { Link } from "react-router-dom"
 
-const ProjectCard = ({ id, title, cover, status, progress }) => {
+const cardStyles = {
+  cad: {
+    complete: {
+      card: "border-cyan-200",
+      badge: "border-cyan-300/60 bg-cyan-400/10 text-green-600",
+    },
+    progress: {
+      card: "border-amber-200",
+      badge: "border-amber-300/60 bg-amber-400/10 text-amber-700",
+    },
+  },
+  simulation: {
+    complete: {
+      card: "border-violet-200",
+      badge: "border-violet-300/60 bg-violet-400/10 text-green-600",
+    },
+    progress: {
+      card: "border-amber-200",
+      badge: "border-amber-300/60 bg-amber-400/10 text-amber-700",
+    },
+  },
+}
+
+const ProjectCard = ({ id, title, cover, type, status, progress }) => {
+  const currentStatus = status || "complete"
+  const style = cardStyles[type]?.[currentStatus] || cardStyles.cad.complete
+  const coverSource = cover && (cover.startsWith("/") || cover.startsWith("http")
+    ? cover
+    : `${import.meta.env.BASE_URL}${cover}`)
 
   const CardContent = (
-    <div className="group relative cursor-pointer overflow-hidden rounded-xl border border-slate-200 bg-white shadow-sm transition duration-300 hover:-translate-y-1 hover:border-blue-300 hover:shadow-lg">
+    <div className={`group relative cursor-pointer overflow-hidden rounded-xl border bg-white shadow-sm transition hover:-translate-y-1 hover:border-blue-400 hover:shadow-lg ${style.card}`}>
 
       {/* Image */}
-      <img
-        src={`${import.meta.env.BASE_URL}${cover}`}
-        alt={title}
-        className={`h-28 w-full object-cover transition duration-500 group-hover:scale-105 sm:h-40 ${
-          status === "progress" ? "opacity-0" : ""
-        }`}
-      />
+      {coverSource ? (
+        <img
+          src={coverSource}
+          alt={title}
+          className={`h-28 w-full object-cover sm:h-40 ${
+            status === "progress" ? "opacity-0" : ""
+          }`}
+        />
+      ) : (
+        <div className="h-28 w-full bg-slate-700 sm:h-40" aria-hidden="true" />
+      )}
+
+      <span className={`absolute right-3 top-3 z-20 rounded-full border px-2 py-1 text-[10px] font-bold uppercase tracking-wider backdrop-blur-sm ${style.badge}`}>
+        {currentStatus === "complete" ? "Complete" : "In progress"}
+      </span>
 
       {/* Overlay for in-progress */}
       {status === "progress" && (
@@ -31,7 +67,7 @@ const ProjectCard = ({ id, title, cover, status, progress }) => {
           </div>
 
           <span className="text-xs mt-2">
-            {progress}% complete
+            {progress ?? 0}% complete
           </span>
 
         </div>
