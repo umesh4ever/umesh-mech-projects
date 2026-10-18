@@ -5,7 +5,7 @@ const project = {
   type: "cad",
   title: "Floating Disc Brake",
   cover,
-  status: "completed",
+  status: "complete",
   progress: 100,
 };
 

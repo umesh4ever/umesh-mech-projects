@@ -1,5 +1,7 @@
 import DiscBrake from "./discBrake/DiscBrake";
 import discBrake from "./discBrake/project";
+import DiscBrakeCae from "./discBrakeCae/DiscBrakeCae";
+import discBrakeCae from "./discBrakeCae/project";
 import Cmm from "./cmm/Cmm";
 import cmm from "./cmm/project";
 import Geneva from "./geneva/Geneva";
@@ -13,6 +15,7 @@ import shockAbsorber from "./shockAbsorber/project";
 
 const projects = [
   { ...discBrake, component: DiscBrake },
+  { ...discBrakeCae, component: DiscBrakeCae },
   { ...cmm, component: Cmm },
   { ...geneva, component: Geneva },
   { ...shockAbsorber, component: ShockAbsorber },
